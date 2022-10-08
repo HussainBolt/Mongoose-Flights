@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+<table id="list">
+    <thead>
+        <tr>
+            <th>Airline</th>
+            <th>Airport</th>
+            <th>Flight No.</th>
+            <th>Departure Date/Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% flights.forEach(function(s) { %>
+            <tr>
+                <td><%= s.airline %></td>
+                <td><%= s.airport %></td>
+                <td><%= s.flightNo %></td>
+                <td><%= s.departs.toLocaleString() %></td>
+                <td><form action="/flights/<%= s.id %>?_method=DELETE" method="POST">
+                    <button type="submit">DELETE</button></form></td>
+                <td>
+                    <a href="/flights/<%= s.id %>">Details</a>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- include('../partials/footer') %>
